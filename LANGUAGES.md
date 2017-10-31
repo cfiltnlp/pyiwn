@@ -1,0 +1,21 @@
+pyiwn provides access to the WordNets of the following languages:
+
+- hindi
+- english
+- assamese
+- bengali
+- bodo
+- gujarati
+- kannada
+- kashmiri
+- konkani
+- malayalam
+- meitei
+- marathi
+- nepali
+- sanskrit
+- tamil
+- telugu
+- punjabi
+- urdu
+- oriya
