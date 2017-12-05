@@ -12,7 +12,6 @@ def clean_line(line):
 
 
 def synset_data(data, pos):
-    print(data)
     synset_id = int(data[0])
     lemma_names = data[1].split(',')
     head_word = lemma_names[0]
@@ -44,7 +43,6 @@ class Searcher:
                 p -= 1
             if p < 0: self.f.seek(0)
             line = self.f.readline()
-            print '--', mid, line
             if line < string:
                 low = mid+1
             else:

@@ -1,11 +1,12 @@
-import utils
-from utils import Searcher
+from pyiwn import utils
+from pathlib import Path
 
 
 NOUN, VERB, ADVERB, ADJECTIVE = 'noun', 'verb', 'adverb', 'adjective'
 
 languages = ['hindi', 'english', 'assamese', 'bengali', 'bodo', 'gujarati', 'kannada', 'kashmiri', 'konkani', 'malayalam', 'meitei', 'marathi', 'nepali', 'sanskrit', 'tamil', 'telugu', 'punjabi', 'urdu', 'oriya']
 
+home = str(Path.home()) + '/pyiwn_data'
 
 def langs():
     return languages
@@ -24,18 +25,18 @@ class IndoWordNet:
     def all_synsets(self, pos=None):
         synsets = []
         synset_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('data/synsets/{}'.format(synset_file_name)) as fo:
+        with utils.read_file('{}/synsets/{}'.format(home, synset_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 synset_data = utils.synset_data(sp, pos)
-                synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5]
+                synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5].split(' / ')
                 synsets.append(Synset(synset_id, head_word, lemma_names, pos, gloss, examples))
         return synsets
 
     def synsets(self, word, pos=None):
         synsets = []
         words_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('data/words/{}'.format(words_file_name)) as fo:
+        with utils.read_file('{}/words/{}'.format(home, words_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if word == sp[1]:
@@ -43,7 +44,7 @@ class IndoWordNet:
                     pos = sp[2] if pos == None else pos
                     break
         synset_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('data/synsets/{}'.format(synset_file_name)) as fo:
+        with utils.read_file('{}/synsets/{}'.format(home, synset_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 synset_data = utils.synset_data(sp, pos)
@@ -55,40 +56,12 @@ class IndoWordNet:
     def all_words(self, pos=None):
         words = []
         words_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('data/words/{}'.format(words_file_name)) as fo:
+        with utils.read_file('{}/words/{}'.format(home, words_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
-                print(line)
+                print(sp)
                 words.append(sp[1])
         return words
-
-
-class Lemma:
-    def __init__(self, synset, name):
-        self._synset = synset
-        self._name = name
-        self._lang = 'hindi'
-
-    def __repr__(self):
-        return 'Lemma(\'{}.{}.{}.{}\')'.format(self._synset.head_word(), self._synset.pos(), self._synset.synset_id(), self._name)
-
-    def name(self):
-        return self._name
-
-    def synset(self):
-        return self._synset
-
-    def lang(self):
-        return self._lang
-
-    def count(self):
-        pass
-
-    def gradation(self):
-        pass
-
-    def antonym(self):
-        pass
 
 
 class Synset:
@@ -126,23 +99,23 @@ class Synset:
 
     def ontology_nodes(self):
         ontology_node_idx_list = []
-        with utils.read_file('data/ontology/map') as fo:
+        with utils.read_file('{}/ontology/map'.format(home)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
-                if self._synset_id == sp[0]:
+                if self._synset_id == int(sp[0]):
                     ontology_node_idx_list = [int(idx) for idx in sp[1].split(',')]
                     break
         ontology_nodes_list = []
-        with utils.read_file('data/ontology/nodes') as fo:
+        with utils.read_file('{}/ontology/nodes'.format(home)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if int(sp[0]) in ontology_node_idx_list:
-                    ontology_nodes_list.append(sp[1])
+                    ontology_nodes_list.append(' '.join(sp[1:]))
         return ontology_nodes_list
 
     def _relations(self, relation):
         synset_id_list = []
-        with utils.read_file('data/synset_relations/{}.{}'.format(relation, self._pos)) as fo:
+        with utils.read_file('{}/synset_relations/{}.{}'.format(home, relation, self._pos)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 sp[0] = int(sp[0])
@@ -150,11 +123,11 @@ class Synset:
                     synset_id_list = [int(idx) for idx in sp[1].split(',')]
                     break
         synsets = []
-        with utils.read_file('data/synsets/{}.hindi'.format(self._pos)) as fo:
+        with utils.read_file('{}/synsets/{}.hindi'.format(home, self._pos)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if int(sp[0]) in synset_id_list:
-                    synset_data = utils.synset_data(sp[1], self._pos)
+                    synset_data = utils.synset_data(sp, self._pos)
                     synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5]
                     synsets.append(Synset(synset_id, head_word, lemma_names, pos, gloss, examples))
         return synsets
@@ -261,3 +234,58 @@ class Synset:
 
     def troponymy(self):
         return self._relations('troponymy')
+
+
+class Lemma:
+    def __init__(self, synset, name):
+        self._synset = synset
+        self._name = name
+        self._lang = 'hindi'
+
+    def __repr__(self):
+        return 'Lemma(\'{}.{}.{}.{}\')'.format(self._synset.head_word(), self._synset.pos(), self._synset.synset_id(), self._name)
+
+    def name(self):
+        return self._name
+
+    def synset(self):
+        return self._synset
+
+    def lang(self):
+        return self._lang
+
+    # def count(self):
+    #     pass
+
+    def gradation(self):
+        with utils.read_file('{}/synset_relations/gradation'.format(home)) as fo:
+            for line in fo:
+                if str(self._synset.synset_id()) in line:
+                    sp = line.split('\t')
+                    synset_id_list = [int(sp[0]), int(sp[2]), int(sp[4])]
+                    break
+        synsets = []
+        with utils.read_file('{}/synsets/{}.hindi'.format(home, self._synset.pos())) as fo:
+            for line in fo:
+                sp = utils.clean_line(line)
+                if int(sp[0]) in synset_id_list:
+                    synset_data = utils.synset_data(sp, self._synset.pos())
+                    synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5]
+                    synsets.append(Synset(synset_id, head_word, lemma_names, pos, gloss, examples))
+        return {'low': synsets[0], 'medium': synsets[1], 'high': synsets[2]}
+
+    def antonym(self):
+        with utils.read_file('{}/synset_relations/antonyms'.format(home)) as fo:
+            for line in fo:
+                if self._name in line:
+                    antonym_synset_id = int(line.split('\t')[2])
+                    break
+        synsets = []
+        with utils.read_file('{}/synsets/{}.hindi'.format(home, self._synset.pos())) as fo:
+            for line in fo:
+                sp = utils.clean_line(line)
+                if int(sp[0]) == antonym_synset_id:
+                    synset_data = utils.synset_data(sp, self._synset.pos())
+                    synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5]
+                    synsets.append(Synset(synset_id, head_word, lemma_names, pos, gloss, examples))
+        return synsets
