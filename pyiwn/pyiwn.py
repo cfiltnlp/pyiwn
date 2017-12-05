@@ -46,7 +46,7 @@ class IndoWordNet:
             for line in fo:
                 sp = utils.clean_line(line)
                 synset_data = utils.synset_data(sp, pos)
-                synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5].split(' / ')
+                synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5]
                 synsets.append(Synset(synset_id, head_word, lemma_names, pos, gloss, examples))
         return synsets
 
@@ -76,7 +76,6 @@ class IndoWordNet:
         with utils.read_file('{}/words/{}'.format(home, words_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
-                print(sp)
                 words.append(sp[1])
         return words
 
@@ -292,6 +291,7 @@ class Lemma:
         return {'low': synsets[0], 'medium': synsets[1], 'high': synsets[2]}
 
     def antonym(self):
+        antonym_synset_id = -1
         with utils.read_file('{}/synset_relations/antonyms'.format(home)) as fo:
             for line in fo:
                 if self._name in line:
