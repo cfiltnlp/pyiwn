@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pyiwn',
-      version='0.1',
+      version='0.2',
       description='IndoWordNet Library (IWNL) is an API for accessing linked lexical knowledge base of wordnets of 18 scheduled languages of India, viz., Assamese, Bangla, Bodo, Gujarati, Hindi, Kannada, Kashmiri, Konkani, Malayalam, Meitei (Manipuri), Marathi, Nepali, Odia, Punjabi, Sanskrit, Tamil, Telugu and Urdu. It also provides functionality beyond data access, such as relationship discovery, word similarity and relatednes measures and morphological processing.',
       url='https://github.com/riteshpanjwani/pyiwn',
       author='Ritesh Panjwani',
@@ -10,5 +10,5 @@ setup(name='pyiwn',
       license='MIT',
       packages=['pyiwn'],
       zip_safe=False,
-      keywords = ['wordnet', 'IndoWordNet', 'nlp', 'python', 'API'], # arbitrary keywords
-    classifiers = [])
+      keywords = ['wordnet', 'IndoWordNet', 'nlp', 'python', 'API']
+      )

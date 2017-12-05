@@ -1,5 +1,9 @@
 from pyiwn import utils
 from pathlib import Path
+import urllib.request
+import shutil
+import zipfile
+import os
 
 
 NOUN, VERB, ADVERB, ADJECTIVE = 'noun', 'verb', 'adverb', 'adjective'
@@ -11,6 +15,19 @@ home = str(Path.home()) + '/pyiwn_data'
 def langs():
     return languages
                 
+def download():
+    print('Downloading pyiwn data (80 MB)...')
+    url = "http://www.cfilt.iitb.ac.in/pyiwn/data/pyiwn_data.zip"
+    pyiwn_data_path = '{}/pyiwn_data.zip'.format(str(Path.home()))
+    with urllib.request.urlopen(url) as response, open(pyiwn_data_path, 'wb') as out_file:
+        shutil.copyfileobj(response, out_file)
+    print('Extracting pyinw data...')
+    zip_ref = zipfile.ZipFile(pyiwn_data_path, 'r')
+    zip_ref.extractall(str(Path.home()))
+    zip_ref.close()
+    os.remove(pyiwn_data_path)
+    print('Download successful.')
+
 
 class IndoWordNetError(Exception):
     '''An exception class for wordnet-related errors.'''
