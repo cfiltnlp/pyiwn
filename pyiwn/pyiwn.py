@@ -21,7 +21,7 @@ def download():
     pyiwn_data_path = '{}/pyiwn_data.zip'.format(str(Path.home()))
     with urllib.request.urlopen(url) as response, open(pyiwn_data_path, 'wb') as out_file:
         shutil.copyfileobj(response, out_file)
-    print('Extracting pyinw data...')
+    print('Extracting pyiwn data...')
     zip_ref = zipfile.ZipFile(pyiwn_data_path, 'r')
     zip_ref.extractall(str(Path.home()))
     zip_ref.close()
