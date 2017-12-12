@@ -17,7 +17,7 @@ def langs():
                 
 def download():
     print('Downloading pyiwn data (80 MB)...')
-    url = "http://www.cfilt.iitb.ac.in/pyiwn/data/pyiwn_data.zip"
+    url = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
     pyiwn_data_path = '{}/pyiwn_data.zip'.format(str(Path.home()))
     with urllib.request.urlopen(url) as response, open(pyiwn_data_path, 'wb') as out_file:
         shutil.copyfileobj(response, out_file)
