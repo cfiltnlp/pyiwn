@@ -12,7 +12,7 @@ pyiwn can be installed using pip as follows:
 pip install --upgrade pyiwn
 ```
 
-For further instructions and usage demo, please see demo/demo.py or demo.ipynb (Jupyter Notebook) in this project's root directory.
+For further instructions and usage demo, please see demo/demo.py or demo.ipynb (Jupyter Notebook) in this project's root directory. Please create a new Issue if you are facing any issues or for feature requests.
 
 
 ## Citing
