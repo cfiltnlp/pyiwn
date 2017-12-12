@@ -19,7 +19,15 @@ For further instructions and usage demo, please see demo/demo.py or demo.ipynb (
 
 If you publish work that uses pyiwn, please cite the pyiwn paper, as follows:
 
-TBA
+```
+@inproceedings{panjwani2018pyiwn,
+  title={pyiwn: A Python-based API to access Indian Language WordNets},
+  author={Panjwani, Ritesh and Kanojia, Diptesh and Bhattacharyya, Pushpak},
+  booktitle={Proceedings of the Global WordNet Conference},
+  volume={2018},
+  year={2018}
+}
+```
 
 
 ## Copyright
