@@ -21,7 +21,6 @@ def synset_data(data, pos):
         examples = re.sub('"', '', gloss_examples_sp[1]).split(' / ')
     else:
         gloss, examples = '', []
-    pos = data[3]
     return (synset_id, head_word, lemma_names, pos, gloss, examples)
 
 class Searcher:
