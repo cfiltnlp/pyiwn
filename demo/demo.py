@@ -58,6 +58,12 @@ pyiwn.ADVERB
 # # print("HYPERNYMY: " + str(syn.hyponymy()))
 # # Similarly, other relations can be accessed, for complete list of relations, please see: https://github.com/riteshpanjwani/pyiwn/blob/master/SYNSET-RELATIONS.md
 
+# [Lemma('सुबह.noun.26824.सुबह')]
+# सुबह
+# Synset('सुबह.noun.26824')
+# hindi
+# {'low': Synset('दोपहर.noun.6195'), 'medium': Synset('शाम.noun.8164'), 'high': Synset('सुबह.noun.26824')}
+# [Synset('शाम.noun.8164')]
 
 # Lemmas
 syn = iwn.synsets('सुबह', pos=pyiwn.NOUN)[1]
