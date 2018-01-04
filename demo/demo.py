@@ -3,7 +3,7 @@ from pyiwn import pyiwn
 
 
 # Download the IndoWordNet data (80 MB). It will download all the data in 'pyiwn_data' directory in the home directory.
-# pyiwn.download()
+pyiwn.download()
 
 
 # List of supported languages in IndoWordNet. Returns a list.
@@ -30,40 +30,34 @@ pyiwn.ADVERB
 
 
 # Synset Properties
-# syns = iwn.synsets('सज्जन', pos=pyiwn.NOUN)
-# print(syns)
-# syn = syns[0]
-# # Synset ID. Returns an int.
-# print(syn.synset_id())
-# # Head Word. Returns a string.
-# print(syn.head_word())
-# # Lemmas. Returns a list of Lemma objects
-# print(syn.lemma_names())
-# print(syn.lemmas())
-# # Part of Speech Tag. Returns a string.
-# print(syn.pos())
-# # Definition of the Synset. Returns a string.
-# print(syn.gloss())
-# # Examples of the Synset. Returns a list of example strings.
-# print(syn.examples())
-# # Ontology nodes. Returns a string denoting the name of the node.
-# print(syn.ontology_nodes())
+syns = iwn.synsets('सज्जन', pos=pyiwn.NOUN)
+print(syns)
+syn = syns[0]
+# Synset ID. Returns an int.
+print(syn.synset_id())
+# Head Word. Returns a string.
+print(syn.head_word())
+# Lemmas. Returns a list of Lemma objects
+print(syn.lemma_names())
+print(syn.lemmas())
+# Part of Speech Tag. Returns a string.
+print(syn.pos())
+# Definition of the Synset. Returns a string.
+print(syn.gloss())
+# Examples of the Synset. Returns a list of example strings.
+print(syn.examples())
+# Ontology nodes. Returns a string denoting the name of the node.
+print(syn.ontology_nodes())
 
 
 # Synset Relations
-# syns = iwn.synsets('शिवालय', pos=pyiwn.NOUN)
-# syn = syns[0]
-# # Hypernymy relation
-# print("HYPERNYMY: " + str(syn.hypernymy()))
-# # print("HYPERNYMY: " + str(syn.hyponymy()))
-# # Similarly, other relations can be accessed, for complete list of relations, please see: https://github.com/riteshpanjwani/pyiwn/blob/master/SYNSET-RELATIONS.md
+syns = iwn.synsets('शिवालय', pos=pyiwn.NOUN)
+syn = syns[0]
+# Hypernymy relation
+print("HYPERNYMY: " + str(syn.hypernymy()))
+# print("HYPERNYMY: " + str(syn.hyponymy()))
+# Similarly, other relations can be accessed, for complete list of relations, please see: https://github.com/riteshpanjwani/pyiwn/blob/master/SYNSET-RELATIONS.md
 
-# [Lemma('सुबह.noun.26824.सुबह')]
-# सुबह
-# Synset('सुबह.noun.26824')
-# hindi
-# {'low': Synset('दोपहर.noun.6195'), 'medium': Synset('शाम.noun.8164'), 'high': Synset('सुबह.noun.26824')}
-# [Synset('शाम.noun.8164')]
 
 # Lemmas
 syn = iwn.synsets('सुबह', pos=pyiwn.NOUN)[1]
@@ -84,20 +78,20 @@ print(syn.lemmas()[0].antonym())
 
 
 # # All Synsets
-# syns = iwn.all_synsets()
-# print(len(syns))
+syns = iwn.all_synsets()
+print(len(syns))
 
 
 # # All Synsets filtered by a Part of Speech tag
-# syns = iwn.all_synsets(pos=pyiwn.NOUN)
-# print(len(syns))
+syns = iwn.all_synsets(pos=pyiwn.NOUN)
+print(len(syns))
 
 
 # # List of all the unique words in the WordNet
-# words = iwn.all_words()
-# print(len(words))
+words = iwn.all_words()
+print(len(words))
 
 
 # # List of all the unique words in the WordNet filtered by a Part of Speech tag
-# words = iwn.all_words(pos=pyiwn.NOUN)
-# print(len(words))
+words = iwn.all_words(pos=pyiwn.NOUN)
+print(len(words))
