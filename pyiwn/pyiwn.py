@@ -13,12 +13,12 @@ languages = ['hindi', 'english', 'assamese', 'bengali', 'bodo', 'gujarati', 'kan
 home = str(Path.home()) + '/pyiwn_data'
 
 def langs():
-    return languages
+    return 'pyiwn supports the WordNets of the following languages: {}'.format(str(languages))
                 
 def download():
     url = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
     pyiwn_data_path = '{}/pyiwn_data.zip'.format(str(Path.home()))
-    print('Please wait. Downloading IndoWordNet synset data (80 MB) to {}'.format(str(Path.home())))
+    print('Please wait. Downloading IndoWordnet synset data (80 MB) to {}'.format(str(Path.home())))
     with urllib.request.urlopen(url) as response, open(pyiwn_data_path, 'wb') as out_file:
         shutil.copyfileobj(response, out_file)
     print('Extracting pyiwn data...')
