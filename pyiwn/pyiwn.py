@@ -17,7 +17,7 @@ languages = ['assamese', 'bengali', 'bodo', 'english', 'gujarati', 'hindi',
 
 USER_HOME = str(Path.home())
 IWN_URL = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
-home = user_home + '/pyiwn_data'
+home = USER_HOME + '/pyiwn_data'
 
 def langs():
     return 'pyiwn supports the WordNets of the following languages: {}'.format(str(languages))
