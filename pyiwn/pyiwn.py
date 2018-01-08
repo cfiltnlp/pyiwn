@@ -29,8 +29,8 @@ def download(path=USER_HOME, url=IWN_URL):
     :param url: Url to download the IWN zipfile.
     :type url: str
     """
-    print('Please wait. Downloading IndoWordnet synset data (80 MB) to {}'.format(user_home), file=sys.stderr)
-    pyiwn_data_path = '{}/pyiwn_data.zip'.format(user_home)
+    print('Please wait. Downloading IndoWordnet synset data (80 MB) to {}'.format(path), file=sys.stderr)
+    pyiwn_data_path = '{}/pyiwn_data.zip'.format(path)
     with urllib.request.urlopen(url) as response:
         with open(pyiwn_data_path, 'wb') as out_file:
             shutil.copyfileobj(response, out_file)
