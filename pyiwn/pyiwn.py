@@ -1,32 +1,44 @@
+from __future__ import print_function
+
 from pyiwn import utils
 from pathlib import Path
 import urllib.request
 import shutil
 import zipfile
 import os
+import sys
 
 
 NOUN, VERB, ADVERB, ADJECTIVE = 'noun', 'verb', 'adverb', 'adjective'
 
-languages = ['hindi', 'english', 'assamese', 'bengali', 'bodo', 'gujarati', 'kannada', 'kashmiri', 'konkani', 'malayalam', 'meitei', 'marathi', 'nepali', 'sanskrit', 'tamil', 'telugu', 'punjabi', 'urdu', 'oriya']
+languages = ['assamese', 'bengali', 'bodo', 'english', 'gujarati', 'hindi', 
+             'kannada', 'kashmiri', 'konkani', 'malayalam', 'marathi', 'meitei', 
+             'nepali', 'oriya', 'punjabi', 'sanskrit', 'tamil', 'telugu', 'urdu']
 
-home = str(Path.home()) + '/pyiwn_data'
+USER_HOME = str(Path.home())
+IWN_URL = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
+home = USER_HOME + '/pyiwn_data'
 
 def langs():
     return 'pyiwn supports the WordNets of the following languages: {}'.format(str(languages))
                 
-def download():
-    url = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
-    pyiwn_data_path = '{}/pyiwn_data.zip'.format(str(Path.home()))
-    print('Please wait. Downloading IndoWordnet synset data (80 MB) to {}'.format(str(Path.home())))
-    with urllib.request.urlopen(url) as response, open(pyiwn_data_path, 'wb') as out_file:
-        shutil.copyfileobj(response, out_file)
-    print('Extracting pyiwn data...')
-    zip_ref = zipfile.ZipFile(pyiwn_data_path, 'r')
-    zip_ref.extractall(str(Path.home()))
-    zip_ref.close()
+def download(path=USER_HOME, url=IWN_URL):
+    """ Downloads the Indian WordNet. 
+    :param path: Path to save the Indian WordNet.
+    :type path: str
+    :param url: Url to download the IWN zipfile.
+    :type url: str
+    """
+    print('Please wait. Downloading IndoWordnet synset data (80 MB) to {}'.format(path), file=sys.stderr)
+    pyiwn_data_path = '{}/pyiwn_data.zip'.format(path)
+    with urllib.request.urlopen(url) as response:
+        with open(pyiwn_data_path, 'wb') as out_file:
+            shutil.copyfileobj(response, out_file)
+    print('Extracting pyiwn data...', file=sys.stderr)
+    with zipfile.ZipFile(pyiwn_data_path, 'r') as zip_ref:
+        zip_ref.extractall(path)
     os.remove(pyiwn_data_path)
-    print('Download successful.')
+    print('Download successful.', file=sys.stderr)
 
 
 class IndoWordNetError(Exception):
