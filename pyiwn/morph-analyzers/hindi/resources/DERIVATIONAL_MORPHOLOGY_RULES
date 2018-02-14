@@ -1,0 +1,36 @@
+// DERIVATIONAL MORPHOLOGY RULES
+// USED FOR DETERMINING THE CATEGORY OF THE WORD
+// FORMAT OF RULE
+// SUFFIX <suffix> ROOTCAT <rcat> THEN <pcat>
+// rcat is category of stem formed after removing suffix
+// pcat is the list of possible categories if rcat is matched
+// multiple categories is pcat are seperated by commas
+SUFFIX कर ROOTCAT verb THEN verb
+SUFFIX के ROOTCAT verb THEN verb
+SUFFIX ता ROOTCAT adjective THEN noun
+SUFFIX मय ROOTCAT noun THEN adjective
+SUFFIX मयी ROOTCAT noun THEN adjective
+SUFFIX कश ROOTCAT noun THEN adjective
+SUFFIX वाला ROOTCAT noun THEN adjective,noun
+SUFFIX वाली ROOTCAT noun THEN adjective,noun
+SUFFIX वाले ROOTCAT noun THEN adjective,noun 
+SUFFIX वालाें ROOTCAT noun THEN adjective,noun 
+SUFFIX में ROOTCAT pronoun THEN adverb 
+SUFFIX नेवाला ROOTCAT verb THEN adjective,noun
+SUFFIX नेवाली ROOTCAT verb THEN adjective,noun
+SUFFIX नेवाले ROOTCAT verb THEN adjective,noun 
+SUFFIX नेवालाें ROOTCAT verb THEN adjective,noun 
+SUFFIX पन ROOTCAT adjective THEN noun 
+SUFFIX नामा ROOTCAT noun THEN noun 
+SUFFIX नामे ROOTCAT noun THEN noun 
+SUFFIX नामों ROOTCAT noun THEN noun 
+SUFFIX वां ROOTCAT cardinal THEN ordinal 
+SUFFIX वें ROOTCAT cardinal THEN ordinal 
+SUFFIX वे ROOTCAT cardinal THEN ordinal 
+SUFFIX वीं ROOTCAT cardinal THEN ordinal 
+SUFFIX वी ROOTCAT cardinal THEN ordinal 
+SUFFIX पूर्वक ROOTCAT noun THEN adverb
+SUFFIX स्वरूप ROOTCAT noun THEN adverb
+SUFFIX वाँ ROOTCAT cardinal THEN ordinal
+
+ 

@@ -1,0 +1,21 @@
+[Lexicon]
+lexName = /latest-lexicon
+auxVerbFilename = /VERB_AUXILIARY_LIST
+spellingVariationRuleFilename = /Spell_variations_Rules
+
+[Stemmer]
+specialCharactersRuleFilename = /Regex_cat_map
+irregularVerbFilename = /IRREGULAR_VERB_MAPPING
+uniqueSuffixReplacementRuleFilename = /newFormatUniqueSuffixReplacementRules
+derivationalMorphologyRuleFilename = /DERIVATIONAL_MORPHOLOGY_RULES
+stemDictionary = /stemDictionary.serialized
+charametarSuff = /Suff2
+allSuff = /Suff1
+NounSuff = /abc1
+
+[NewStemmer]
+suffixReplacementRuleFilename = /newSRRs
+suffixesFilename = /newsuffixes
+particlesFile = /particles
+useNounList = false
+

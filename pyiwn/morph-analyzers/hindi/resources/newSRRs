@@ -1,0 +1,67 @@
+verb,verb, ै ,,,,1
+verb,verb,,,,,1
+verb,verb, ी ,,,,1,िया
+verb,verb, े ,,,,1,िया
+verb,verb, ो ,,,,1,ु
+verb,verb, ू ,,,,1,ु
+
+verb_aux,vaux, ै ,,,,1
+verb_aux,vaux,,,,,1
+verb_aux,vaux, ी ,,,,1,िया
+verb_aux,vaux, े ,,,,1,िया
+verb_aux,vaux, ो ,,,,1,ु
+verb_aux,vaux, ू ,,,,1,ु
+
+verb,copula, ै ,,,,1
+
+noun,घर,,,,,1, ों
+noun,खर्च,,,,,1, े
+noun,खर्च,,,,,1, ों
+noun,रात,,,,,1, ें
+noun,रात,,,,,1, ों
+noun,लड़का, ा,,,,1, े
+noun,लड़का, ा,,,,1, ों
+noun,राजा,,,,,1, ओं
+noun,लोहा, ा,,,,1, े
+noun,आशा,,,,,1, एँ
+noun,आशा,,,,,1, ओं
+noun,गुड़िया, या ,,,,1, याँ
+noun,गुड़िया, या ,,,,1, यों
+noun,कवि,,,,,1, यों
+noun,आपत्ति,,,,,1, याँ
+noun,आपत्ति,,,,,1, यों
+noun,आदमी, ी ,,,,1, ियों
+noun,लड़की, ी ,,,,1, ियाँ
+noun,लड़की, ी ,,,,1, ियों
+noun,लड़की, ई ,,,,1, इयाँ
+noun,लड़की, ई ,,,,1, इयों
+noun,ऋतु,,,,,1, एँ
+noun,ऋतु,,,,,1, अों
+noun,शत्रु,,,,,1, अों
+noun,आलू, ू ,,,,1, ुअों
+noun,बहु, ू ,,,,1, ुएँ
+noun,बहु, ू ,,,,1, ुअों
+noun,माँ,,,,,1, एं
+noun,माँ,,,,,1, ओं
+noun,कुआँ, आँ ,,,,1, एँ
+noun,कुआँ, आँ ,,,,1, अों
+noun,गेहूँ, ूँ ,,,,1, ुअों
+noun,लौ,,,,,1, एँ
+noun,लौ,,,,,1, वों
+noun,अपनापन, ापन ,,,,1, ेपन
+
+adjective,adjective, ा ,,,,1, ी
+adjective,adjective, ा ,,,,1, े
+adjective,adjective, या ,,,,1, ई
+ordinal,ordinal, ा ,,,,1, ी
+ordinal,ordinal, ा ,,,,1, े
+ordinal,ordinal, या ,,,,1, ई
+ordinal,ordinal,  ,,,,1, वां
+ordinal,ordinal,  ,,,,1, वें
+ordinal,ordinal,  ,,,,1, वीं
+ordinal,ordinal,  ,,,,1, वाँ
+particle,particle, ा,,,,1, े, ा,,,,1
+particle,particle, ा,,,,1, ी, ा,,,,1
+cardinal,cardinal,,,,,1, ों,,,,,1
+
+

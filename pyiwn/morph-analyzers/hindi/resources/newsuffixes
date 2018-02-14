@@ -1,0 +1,284 @@
+verb,1, ो
+verb,1, ों
+verb,1, ैं
+verb,1, ूं
+verb,1, ूँ
+verb,1, ोगा
+verb,1, ोगी
+verb,1, ोंगे
+verb,1, ोंगी
+verb,1, ूंगा
+verb,1, ूँगा
+verb,1, ूंगी
+verb,1, ूँगी
+verb,1, ोऊंगा
+verb,1, ोऊँगा
+verb,1, ुआ
+verb,1, ुए
+verb,1, ुये
+verb,1, ुई
+verb,1, ुईं
+verb,1, ुयी
+verb,1, ुयीं
+verb,1, ूँ
+verb,1,ऊँ
+verb,1, ो
+verb,1, िए
+verb,1, िये
+verb,1,ओ
+verb,1,इए
+verb,1,इये
+verb,1,जिये
+verb,1,जिए
+verb,1,ता
+verb,1,ती
+verb,1,ते
+verb,1,तीं
+verb,1, ूंगा
+verb,1, ेंगे
+verb,1, ूंगी
+verb,1, ूँगी
+verb,1, ूँगा
+verb,1,ऊंगा
+verb,1,एंगीं
+verb,1,एँगे
+verb,1,एँगीं
+verb,1,ऊंगी
+verb,1,ऊँगी
+verb,1,ऊँगा
+verb,1, ेंगी
+verb,1, ेगा
+verb,1, ेगी
+verb,1, ेंगे
+verb,1,एंगी
+verb,1,एगा
+verb,1,एगी
+verb,1,एंगे
+verb,1,येगा
+verb,1,येगी
+verb,1,येंगी
+verb,1,येंगे
+verb,1, ोगे
+verb,1,ओगे
+verb,1, ोगी
+verb,1,ओगी
+verb,1,या
+verb,1,यी
+verb,1,ई
+verb,1, िया
+verb,1, िया
+verb,1,ये
+verb,1,यें
+verb,1,ए
+verb,1,एँ
+verb,1,ईं
+verb,1,यीं
+verb,1,ना
+verb,1,ने
+verb,1,नी
+verb,1, ा
+verb,1, ी
+verb,1, े
+verb,1, ीं
+verb,1, ें
+verb,1, ुआ
+verb,1, ुई
+verb,1, ुईं
+verb,1, ुया
+verb,1, ुये
+
+verb,1, ो
+verb,1, ों
+verb,1, ैं
+verb,1, ूं
+verb,1, ूँ
+verb,1, ोगा
+verb,1, ोगी
+verb,1, ोंगे
+verb,1, ोंगी
+verb,1, ूंगा
+verb,1, ूँगा
+verb,1, ूंगी
+verb,1, ूँगी
+verb,1, ोऊंगा
+verb,1, ोऊँगा
+verb,1, ुआ
+verb,1, ुये
+verb,1, ुई
+verb,1, ुईं
+verb,1, ुयी
+verb,1, ुयीं
+
+verb,1,गा
+verb,1,गी
+verb,1,गे
+verb,1,गी
+
+noun,1, ों
+noun,1, े
+noun,1, ों
+noun,1, ें
+noun,1, ों
+noun,1, े
+noun,1, ों
+noun,1,ओं
+noun,1, े
+noun,1,एँ
+noun,1,ओं
+noun,1,याँ
+noun,1,यों
+noun,1,यों
+noun,1,याँ
+noun,1,यों
+noun,1, ियों
+noun,1, ियाँ
+noun,1, ियों
+noun,1,इयाँ
+noun,1,इयों
+noun,1,एँ
+noun,1,अों
+noun,1,अों
+noun,1, ुअों
+noun,1, ुएँ
+noun,1, ुअों
+noun,1,एं
+noun,1,ओं
+noun,1,एँ
+noun,1,अों
+noun,1, ुअों
+noun,1,एँ
+noun,1,वों
+noun,1, ेपन
+
+adjective,1, ी
+adjective,1, े
+adjective,1,ई
+
+ordinal,1, ी
+ordinal,1, े
+ordinal,1,ई
+ordinal,1,वां
+ordinal,1,वें
+ordinal,1,वीं
+ordinal,1,वाँ
+
+particle,1, े
+particle,1, ी
+cardinal,1, ों
+
+verb_aux,1, ो
+verb_aux,1, ों
+verb_aux,1, ैं
+verb_aux,1, ूं
+verb_aux,1, ूँ
+verb_aux,1, ोगा
+verb_aux,1, ोगी
+verb_aux,1, ोंगे
+verb_aux,1, ोंगी
+verb_aux,1, ूंगा
+verb_aux,1, ूँगा
+verb_aux,1, ूंगी
+verb_aux,1, ूँगी
+verb_aux,1, ोऊंगा
+verb_aux,1, ोऊँगा
+verb_aux,1, ुआ
+verb_aux,1, ुए
+verb_aux,1, ुये
+verb_aux,1, ुई
+verb_aux,1, ुईं
+verb_aux,1, ुयी
+verb_aux,1, ुयीं
+verb_aux,1, ूँ
+verb_aux,1,ऊँ
+verb_aux,1, ो
+verb_aux,1, िए
+verb_aux,1, िये
+verb_aux,1,ओ
+verb_aux,1,इए
+verb_aux,1,इये
+verb_aux,1,जिये
+verb_aux,1,जिए
+verb_aux,1,ता
+verb_aux,1,ती
+verb_aux,1,ते
+verb_aux,1,तीं
+verb_aux,1, ूंगा
+verb_aux,1, ेंगे
+verb_aux,1, ूंगी
+verb_aux,1, ूँगी
+verb_aux,1, ूँगा
+verb_aux,1,ऊंगा
+verb_aux,1,एंगीं
+verb_aux,1,एँगे
+verb_aux,1,एँगीं
+verb_aux,1,ऊंगी
+verb_aux,1,ऊँगी
+verb_aux,1,ऊँगा
+verb_aux,1, ेंगी
+verb_aux,1, ेगा
+verb_aux,1, ेगी
+verb_aux,1, ेंगे
+verb_aux,1,एंगी
+verb_aux,1,एगा
+verb_aux,1,एगी
+verb_aux,1,एंगे
+verb_aux,1,येगा
+verb_aux,1,येगी
+verb_aux,1,येंगी
+verb_aux,1,येंगे
+verb_aux,1, ोगे
+verb_aux,1,ओगे
+verb_aux,1, ोगी
+verb_aux,1,ओगी
+verb_aux,1,या
+verb_aux,1,यी
+verb_aux,1,ई
+verb_aux,1, िया
+verb_aux,1, िया
+verb_aux,1,ये
+verb_aux,1,यें
+verb_aux,1,ए
+verb_aux,1,एँ
+verb_aux,1,ईं
+verb_aux,1,यीं
+verb_aux,1,ना
+verb_aux,1,ने
+verb_aux,1,नी
+verb_aux,1, ा
+verb_aux,1, ी
+verb_aux,1, े
+verb_aux,1, ीं
+verb_aux,1, ें
+verb_aux,1, ुआ
+verb_aux,1, ुई
+verb_aux,1, ुईं
+verb_aux,1, ुया
+verb_aux,1, ुये
+
+verb_aux,1, ो
+verb_aux,1, ों
+verb_aux,1, ैं
+verb_aux,1, ूं
+verb_aux,1, ूँ
+verb_aux,1, ोगा
+verb_aux,1, ोगी
+verb_aux,1, ोंगे
+verb_aux,1, ोंगी
+verb_aux,1, ूंगा
+verb_aux,1, ूँगा
+verb_aux,1, ूंगी
+verb_aux,1, ूँगी
+verb_aux,1, ोऊंगा
+verb_aux,1, ोऊँगा
+verb_aux,1, ुआ
+verb_aux,1, ुये
+verb_aux,1, ुई
+verb_aux,1, ुईं
+verb_aux,1, ुयी
+verb_aux,1, ुयीं
+
+verb_aux,1,गा
+verb_aux,1,गी
+verb_aux,1,गे
+verb_aux,1,गी
+
