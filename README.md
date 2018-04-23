@@ -6,14 +6,21 @@ pyiwn -- A Python based API to access Indian language WordNets -- This API gives
 
 ## Installation
 
-pyiwn can be installed using pip as follows:
+pyiwn can be installed using pip (Python 3.5+) as follows:
 
 ```
 pip install pyiwn
 ```
 
+and if your pip defaults to Python 2.7.x:
+
+```
+pip3 install pyiwn
+```
+
 For further instructions and usage demo, please see demo/demo.py or demo.ipynb (Jupyter Notebook) in this project's root directory. Please create a new Issue if you are facing any issues or for feature requests.
 
+Note: This library is currently developed and tested in Python 3.5+.
 
 ## Citing
 
