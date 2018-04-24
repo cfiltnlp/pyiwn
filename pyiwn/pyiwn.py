@@ -17,7 +17,7 @@ languages = ['assamese', 'bengali', 'bodo', 'english', 'gujarati', 'hindi',
 
 USER_HOME = str(Path.home())
 IWN_URL = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
-home = USER_HOME + '/pyiwn_data'
+PYIWN_DATA_HOME = USER_HOME + '/pyiwn_data'
 
 def langs():
     return 'pyiwn supports the WordNets of the following languages: {}'.format(str(languages))
@@ -54,7 +54,7 @@ class IndoWordNet:
     def all_synsets(self, pos=None):
         synsets = []
         synset_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('{}/synsets/{}'.format(home, synset_file_name)) as fo:
+        with utils.read_file('{}/synsets/{}'.format(PYIWN_DATA_HOME, synset_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 synset_data = utils.synset_data(sp, pos)
@@ -65,15 +65,15 @@ class IndoWordNet:
     def synsets(self, word, pos=None):
         synsets = []
         words_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('{}/words/{}'.format(home, words_file_name)) as fo:
+        with utils.read_file('{}/words/{}'.format(PYIWN_DATA_HOME, words_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if word == sp[1]:
                     synset_id = sp[0]
-                    pos = sp[2] if pos == None else pos
+                    pos = sp[2] if pos == None and len(sp) == 3 else pos
                     break
         synset_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('{}/synsets/{}'.format(home, synset_file_name)) as fo:
+        with utils.read_file('{}/synsets/{}'.format(PYIWN_DATA_HOME, synset_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 synset_data = utils.synset_data(sp, pos)
@@ -85,7 +85,7 @@ class IndoWordNet:
     def all_words(self, pos=None):
         words = []
         words_file_name = 'all.{}'.format(self._lang) if pos == None else '{}.{}'.format(pos, self._lang)
-        with utils.read_file('{}/words/{}'.format(home, words_file_name)) as fo:
+        with utils.read_file('{}/words/{}'.format(PYIWN_DATA_HOME, words_file_name)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 words.append(sp[1])
@@ -127,14 +127,14 @@ class Synset:
 
     def ontology_nodes(self):
         ontology_node_idx_list = []
-        with utils.read_file('{}/ontology/map'.format(home)) as fo:
+        with utils.read_file('{}/ontology/map'.format(PYIWN_DATA_HOME)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if self._synset_id == int(sp[0]):
                     ontology_node_idx_list = [int(idx) for idx in sp[1].split(',')]
                     break
         ontology_nodes_list = []
-        with utils.read_file('{}/ontology/nodes'.format(home)) as fo:
+        with utils.read_file('{}/ontology/nodes'.format(PYIWN_DATA_HOME)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if int(sp[0]) in ontology_node_idx_list:
@@ -143,7 +143,7 @@ class Synset:
 
     def _relations(self, relation):
         synset_id_list = []
-        with utils.read_file('{}/synset_relations/{}.{}'.format(home, relation, self._pos)) as fo:
+        with utils.read_file('{}/synset_relations/{}.{}'.format(PYIWN_DATA_HOME, relation, self._pos)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 sp[0] = int(sp[0])
@@ -151,7 +151,7 @@ class Synset:
                     synset_id_list = [int(idx) for idx in sp[1].split(',')]
                     break
         synsets = []
-        with utils.read_file('{}/synsets/{}.hindi'.format(home, self._pos)) as fo:
+        with utils.read_file('{}/synsets/{}.hindi'.format(PYIWN_DATA_HOME, self._pos)) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if int(sp[0]) in synset_id_list:
@@ -286,14 +286,14 @@ class Lemma:
     #     pass
 
     def gradation(self):
-        with utils.read_file('{}/synset_relations/gradation'.format(home)) as fo:
+        with utils.read_file('{}/synset_relations/gradation'.format(PYIWN_DATA_HOME)) as fo:
             for line in fo:
                 if str(self._synset.synset_id()) in line:
                     sp = line.split('\t')
                     synset_id_list = [int(sp[0]), int(sp[2]), int(sp[4])]
                     break
         synsets = []
-        with utils.read_file('{}/synsets/{}.hindi'.format(home, self._synset.pos())) as fo:
+        with utils.read_file('{}/synsets/{}.hindi'.format(PYIWN_DATA_HOME, self._synset.pos())) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if int(sp[0]) in synset_id_list:
@@ -304,13 +304,13 @@ class Lemma:
 
     def antonym(self):
         antonym_synset_id = -1
-        with utils.read_file('{}/synset_relations/antonyms'.format(home)) as fo:
+        with utils.read_file('{}/synset_relations/antonyms'.format(PYIWN_DATA_HOME)) as fo:
             for line in fo:
                 if self._name in line:
                     antonym_synset_id = int(line.split('\t')[2])
                     break
         synsets = []
-        with utils.read_file('{}/synsets/{}.hindi'.format(home, self._synset.pos())) as fo:
+        with utils.read_file('{}/synsets/{}.hindi'.format(PYIWN_DATA_HOME, self._synset.pos())) as fo:
             for line in fo:
                 sp = utils.clean_line(line)
                 if int(sp[0]) == antonym_synset_id:
