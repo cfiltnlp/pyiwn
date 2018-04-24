@@ -3,6 +3,8 @@
 
 pyiwn -- A Python based API to access Indian language WordNets -- This API gives access to synsets, glosses, examples, lexico-semantic relations between synsets, ontology nodes for 18 Indian languages, see [LANGUAGES.md](LANGUAGES.md) for the complete list of supported languages. In future, it will also provide access to speech data for words, glosses examples in Hindi WordNet.
 
+## Prerequisite
+Python 3.5+
 
 ## Installation
 
@@ -16,6 +18,14 @@ and if your pip defaults to Python 2.7.x:
 
 ```
 pip3 install --upgrade pyiwn
+```
+
+or
+
+```
+git clone https://github.com/riteshpanjwani/pyiwn.git
+cd pyiwn
+python setup.py install
 ```
 
 For further instructions and usage demo, please see demo/demo.py or demo.ipynb (Jupyter Notebook) in this project's root directory. Please create a new Issue if you are facing any issues or for feature requests.
