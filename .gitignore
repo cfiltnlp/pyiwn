@@ -17,3 +17,4 @@ web/_build
 
 pyiwn/tests/*
 .idea/*
+.cache/*

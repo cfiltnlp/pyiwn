@@ -4,6 +4,7 @@ try:
     from pyiwn import utils
 except ImportError:
     import utils
+from pyiwn import languages
 from pathlib import Path
 import urllib.request
 import shutil
@@ -14,21 +15,9 @@ import sys
 
 NOUN, VERB, ADVERB, ADJECTIVE = 'noun', 'verb', 'adverb', 'adjective'
 
-languages = ['assamese', 'bengali', 'bodo', 'english', 'gujarati', 'hindi', 
-             'kannada', 'kashmiri', 'konkani', 'malayalam', 'marathi', 'meitei', 
-             'nepali', 'oriya', 'punjabi', 'sanskrit', 'tamil', 'telugu', 'urdu']
-
 USER_HOME = str(Path.home())
 IWN_URL = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
 PYIWN_DATA_HOME = USER_HOME + '/pyiwn_data'
-
-
-def langs():
-    return 'pyiwn supports the WordNets of the following languages: {}'.format(str(possible_languages()))
-
-
-def possible_languages():
-    return languages
 
 
 def download(path=USER_HOME, url=IWN_URL):
@@ -56,7 +45,7 @@ class IndoWordNetError(Exception):
 
 class IndoWordNet:
     def __init__(self, lang):
-        if lang not in possible_languages():
+        if lang not in languages.possible_languages():
             raise IndoWordNetError('Language is not supported.')
         self._lang = lang
 
