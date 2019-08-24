@@ -1,6 +1,9 @@
 from __future__ import print_function
 
-from pyiwn import utils
+try:
+    from pyiwn import utils
+except ImportError:
+    import utils
 from pathlib import Path
 import urllib.request
 import shutil
@@ -19,9 +22,15 @@ USER_HOME = str(Path.home())
 IWN_URL = "https://www.dropbox.com/s/a3tlr5ll3y3pef6/pyiwn_data.zip?dl=1"
 PYIWN_DATA_HOME = USER_HOME + '/pyiwn_data'
 
+
 def langs():
-    return 'pyiwn supports the WordNets of the following languages: {}'.format(str(languages))
-                
+    return 'pyiwn supports the WordNets of the following languages: {}'.format(str(possible_languages()))
+
+
+def possible_languages():
+    return languages
+
+
 def download(path=USER_HOME, url=IWN_URL):
     """ Downloads the Indian WordNet. 
     :param path: Path to save the Indian WordNet.
@@ -47,7 +56,7 @@ class IndoWordNetError(Exception):
 
 class IndoWordNet:
     def __init__(self, lang):
-        if lang not in langs():
+        if lang not in possible_languages():
             raise IndoWordNetError('Language is not supported.')
         self._lang = lang
 
@@ -318,3 +327,7 @@ class Lemma:
                     synset_id, head_word, lemma_names, pos, gloss, examples = synset_data[0], synset_data[1], synset_data[2], synset_data[3], synset_data[4], synset_data[5]
                     synsets.append(Synset(synset_id, head_word, lemma_names, pos, gloss, examples))
         return synsets
+
+
+if __name__ == '__main__':
+    wn = IndoWordNet('pyiwn')
