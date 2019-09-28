@@ -42,11 +42,11 @@ class IndoWordNet:
     def __init__(self, lang=Language.HINDI):
         logger.info(f'Loading {lang.value} language synsets...')
         self._synset_idx_map = {}
-        self.synset_df = self._load_synset_file(lang.value)
-        self.relations_dict = self._load_relations()
+        self._synset_df = self._load_synset_file(lang.value)
+        self._synset_relations_dict = self._load_synset_relations()
 
     def _load_synset_file(self, lang):
-        filename = os.path.join(*[constants.IWN_DATA_PATH, 'pyiwn_data', 'synsets', 'all.{}'.format(lang)])
+        filename = os.path.join(*[constants.IWN_DATA_PATH, 'synsets', 'all.{}'.format(lang)])
         f = open(filename)
         synsets = list(map(lambda line: self._load_synset(line), f.readlines()))
         synset_df = pd.DataFrame(synsets, columns=['synset_id', 'synsets', 'pos'])
@@ -54,9 +54,9 @@ class IndoWordNet:
         synset_df = synset_df.set_index('synset_id')
         return synset_df
 
-    def _load_relations(self):
+    def _load_synset_relations(self):
         relations_dict = {}
-        for file_path, relation_name in self._synset_relation_list():
+        for file_path, relation_name in self._relation_list():
             relations_dict[relation_name] = []
             d = {}
             for line in open(file_path):
@@ -64,7 +64,7 @@ class IndoWordNet:
                 synset_id, synset_ids = line_parts
                 synset_id = int(synset_id)
                 synset_ids = list(map(int, synset_ids.split(',')))
-                synset_ids = list(filter(lambda x: True if x in self.synset_df.index else False, synset_ids))
+                synset_ids = list(filter(lambda x: True if x in self._synset_df.index else False, synset_ids))
                 if synset_id in d:
                     d[synset_id].extend(synset_ids)
                 else:
@@ -73,9 +73,10 @@ class IndoWordNet:
             relations_dict[relation_name] = d
         return relations_dict
 
-    def _synset_relation_list(self):
+    def _relation_list(self, type='synset_relations'):
         relations = []
-        for file_path in glob.glob('{}/pyiwn_data/synset_relations/*'.format(constants.IWN_DATA_PATH)):
+        path_parts = '{},{},*'.format(constants.IWN_DATA_PATH, type).split(',')
+        for file_path in glob.glob(os.path.join(*path_parts)):
             file_name = ntpath.basename(file_path)
             file_name_parts = file_name.split('.')
             if len(file_name_parts) != 2:
@@ -120,10 +121,10 @@ class IndoWordNet:
 
     def all_synsets(self, pos=None):
         if pos is None:
-            result = self.synset_df
+            result = self._synset_df
         else:
-            mask = (self.synset_df.pos == pos.value)
-            result = self.synset_df[mask]
+            mask = (self._synset_df.pos == pos.value)
+            result = self._synset_df[mask]
         return list(result['synsets'].values)
 
     def synsets(self, word, pos=None):
@@ -132,12 +133,12 @@ class IndoWordNet:
         synsets = []
         if pos is not None:
             for synset_id in synset_id_list:
-                synset = self.synset_df.loc[[synset_id]]['synsets'].values[0]
+                synset = self._synset_df.loc[[synset_id]]['synsets'].values[0]
                 if synset.pos() == pos.value:
                     synsets.append(synset)
         else:
             for synset_id in synset_id_list:
-                synset = self.synset_df.loc[[synset_id]]['synsets'].values[0]
+                synset = self._synset_df.loc[[synset_id]]['synsets'].values[0]
                 synsets.append(synset)
 
         return synsets
@@ -147,15 +148,15 @@ class IndoWordNet:
             return list(self._synset_idx_map.keys())
 
         words = set()
-        mask = (self.synset_df.pos == pos.value)
-        for synset in self.synset_df[mask]['synsets'].values:
+        mask = (self._synset_df.pos == pos.value)
+        for synset in self._synset_df[mask]['synsets'].values:
             for word in synset.lemma_names():
                 words.add(word)
         words = list(words)
         return words
 
     def synset_relation(self, synset, relation):
-        return list(self.synset_df[self.synset_df.index.isin(self.relations_dict[relation.value].get(synset.synset_id(), []))]['synsets'])
+        return list(self._synset_df[self._synset_df.index.isin(self._synset_relations_dict[relation.value].get(synset.synset_id(), []))]['synsets'])
 
 
 class Synset:
@@ -214,10 +215,10 @@ class Lemma:
         return self._lang
 
     def gradation(self):
-        raise NotImplementedError("Should have implemented this")
+        raise NotImplementedError("This method will be implemented soon.")
 
     def antonym(self):
-        raise NotImplementedError("Should have implemented this")
+        raise NotImplementedError("This method will be implemented soon.")
 
 
 @unique

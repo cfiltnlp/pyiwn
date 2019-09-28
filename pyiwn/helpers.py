@@ -41,7 +41,7 @@ def download():
     sys.stdout.write('\n')
 
     logger.info(f'Extracting {constants.IWN_DATA_TEMP_PATH} into {constants.USER_HOME}...')
-    tar = tarfile.open(constants.IWN_DATA_TEMP_PATH, "r:gz")
+    tar = tarfile.open(constants.IWN_DATA_TEMP_PATH)
     tar.extractall(constants.USER_HOME)
     tar.close()
 
