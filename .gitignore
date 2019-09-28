@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+*.egg
+build/
+dist/
+pyiwn.egg-info/
+web/_build
+
+# iPython notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# pyenv files
+.python-version
+
+# pycharm files
+.idea
