@@ -8,19 +8,13 @@ Python 3.5+
 
 ## Installation
 
-pyiwn can be installed using pip (Python 3.5+) as follows:
+pyiwn can be installed using pip
 
 ```
 pip install --upgrade pyiwn
 ```
 
-and if your pip defaults to Python 2.7.x:
-
-```
-pip3 install --upgrade pyiwn
-```
-
-or
+or install it from the source
 
 ```
 git clone https://github.com/riteshpanjwani/pyiwn.git
@@ -28,9 +22,7 @@ cd pyiwn
 python setup.py install
 ```
 
-For further instructions and usage demo, please see demo/demo.py or demo.ipynb (Jupyter Notebook) in this project's root directory. Please create a new Issue if you are facing any issues or for feature requests.
-
-Note: This library is currently developed and tested in Python 3.5+.
+Please see examples/ for further instructions and usage.
 
 ## Citing
 
