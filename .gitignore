@@ -10,7 +10,6 @@ web/_build
 
 # iPython notebooks
 .ipynb_checkpoints
-*.ipynb
 
 # pyenv files
 .python-version

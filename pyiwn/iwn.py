@@ -85,7 +85,7 @@ class IndoWordNet:
             relations.append((file_path, relation_name))
         return relations
 
-    def update_synset_idx_map(self, synset):
+    def _update_synset_idx_map(self, synset):
         synset_id = synset.synset_id()
         for word in synset.lemma_names():
             if word in self._synset_idx_map:
@@ -99,23 +99,30 @@ class IndoWordNet:
             return None, None, None
 
         synset_string = synset_string.replace('\n', '').strip()
-        synset_pattern = '([0-9]+)\t(.+)\t(.+)(:".+")?\t([a-zA-Z]+)'
+        synset_pattern = '([0-9]+)\t(.+)\t(.+)\t([a-zA-Z]+)'
         try:
             matches = re.findall(synset_pattern, synset_string)
-            synset_id, synset_words, gloss, examples, pos = matches[0]
+            synset_id, synset_words, gloss_examples, pos = matches[0]
         except Exception as e:
             return None, None, None
 
         synset_id = int(synset_id)
-        synset_words = synset_words.split(',')
+        synset_words = list(filter(lambda x: False if x == '' else True, synset_words.split(',')))
+        if not synset_words:
+            return None, None, None
         head_word = synset_words[0]
-        if examples != '':
-            examples = re.sub('[":]', '', examples).split('  /  ')
+        if gloss_examples != '':
+            if ':"' in gloss_examples:
+                gloss, examples = gloss_examples.split(':"')
+                examples = examples.rstrip('"').split('  /  ')
+            else:
+                gloss = gloss_examples
+                examples = []
         else:
-            examples = []
+            return None, None, None
         synset = Synset(synset_id, head_word, synset_words, pos, gloss, examples)
 
-        self.update_synset_idx_map(synset)
+        self._update_synset_idx_map(synset)
 
         return synset_id, synset, pos
 
@@ -200,7 +207,6 @@ class Lemma:
     def __init__(self, synset, name):
         self._synset = synset
         self._name = name
-        self._lang = 'hindi'
 
     def __repr__(self):
         return 'Lemma(\'{}.{}.{}.{}\')'.format(self._synset.head_word(), self._synset.pos(), self._synset.synset_id(), self._name)
@@ -210,9 +216,6 @@ class Lemma:
 
     def synset(self):
         return self._synset
-
-    def lang(self):
-        return self._lang
 
     def gradation(self):
         raise NotImplementedError("This method will be implemented soon.")
