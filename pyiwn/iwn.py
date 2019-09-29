@@ -113,8 +113,14 @@ class IndoWordNet:
         head_word = synset_words[0]
         if gloss_examples != '':
             if ':"' in gloss_examples:
-                gloss, examples = gloss_examples.split(':"')
-                examples = examples.rstrip('"').split('  /  ')
+                ge_list = gloss_examples.split(':')
+                gloss = ge_list[0]
+                if len(ge_list) > 1:
+                    examples = ''.join(ge_list[1:])
+                    examples = re.sub('["]', '', examples)
+                    examples = examples.split('  /  ')
+                else:
+                    examples = []
             else:
                 gloss = gloss_examples
                 examples = []

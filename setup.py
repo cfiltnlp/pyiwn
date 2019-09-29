@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pyiwn',
-      version='0.0.4',
+      version='0.0.5',
       description='pyiwn -- A Python based API to access Indian language WordNets -- This API gives access to synsets, glosses, examples, lexico-semantic relations between synsets, ontology nodes for 18 Indian languages, viz., Assamese, Bangla, Bodo, Gujarati, Hindi, Kannada, Kashmiri, Konkani, Malayalam, Meitei (Manipuri), Marathi, Nepali, Odia, Punjabi, Sanskrit, Tamil, Telugu and Urdu. In future, it will also provide access to speech data for words, glosses examples in Hindi WordNet.',
       url='https://github.com/riteshpanjwani/pyiwn',
       author='Ritesh Panjwani',
