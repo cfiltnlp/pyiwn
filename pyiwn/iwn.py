@@ -47,7 +47,7 @@ class IndoWordNet:
 
     def _load_synset_file(self, lang):
         filename = os.path.join(*[constants.IWN_DATA_PATH, 'synsets', 'all.{}'.format(lang)])
-        f = open(filename)
+        f = open(filename,encoding='utf-8')
         synsets = list(map(lambda line: self._load_synset(line), f.readlines()))
         synset_df = pd.DataFrame(synsets, columns=['synset_id', 'synsets', 'pos'])
         synset_df = synset_df.dropna()
