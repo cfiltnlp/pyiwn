@@ -11,8 +11,8 @@ import pyiwn.constants as constants
 
 
 logging.basicConfig(format='[%(filename)s:%(lineno)d] %(message)s',
-    datefmt='%Y-%m-%d:%H:%M:%S',
-    level=logging.INFO)
+                    datefmt='%Y-%m-%d:%H:%M:%S',
+                    level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -46,10 +46,13 @@ class IndoWordNet:
         self._synset_relations_dict = self._load_synset_relations()
 
     def _load_synset_file(self, lang):
-        filename = os.path.join(*[constants.IWN_DATA_PATH, 'synsets', 'all.{}'.format(lang)])
-        f = open(filename, encoding="utf-8")
-        synsets = list(map(lambda line: self._load_synset(line), f.readlines()))
-        synset_df = pd.DataFrame(synsets, columns=['synset_id', 'synsets', 'pos'])
+        filename = os.path.join(
+            *[constants.IWN_DATA_PATH, 'synsets', 'all.{}'.format(lang)])
+        f = open(filename, encoding='utf8')
+        synsets = list(
+            map(lambda line: self._load_synset(line), f.readlines()))
+        synset_df = pd.DataFrame(
+            synsets, columns=['synset_id', 'synsets', 'pos'])
         synset_df = synset_df.dropna()
         synset_df = synset_df.set_index('synset_id')
         return synset_df
@@ -64,7 +67,8 @@ class IndoWordNet:
                 synset_id, synset_ids = line_parts
                 synset_id = int(synset_id)
                 synset_ids = list(map(int, synset_ids.split(',')))
-                synset_ids = list(filter(lambda x: True if x in self._synset_df.index else False, synset_ids))
+                synset_ids = list(
+                    filter(lambda x: True if x in self._synset_df.index else False, synset_ids))
                 if synset_id in d:
                     d[synset_id].extend(synset_ids)
                 else:
@@ -107,7 +111,8 @@ class IndoWordNet:
             return None, None, None
 
         synset_id = int(synset_id)
-        synset_words = list(filter(lambda x: False if x == '' else True, synset_words.split(',')))
+        synset_words = list(filter(lambda x: False if x ==
+                            '' else True, synset_words.split(',')))
         if not synset_words:
             return None, None, None
         head_word = synset_words[0]
@@ -126,7 +131,8 @@ class IndoWordNet:
                 examples = []
         else:
             return None, None, None
-        synset = Synset(synset_id, head_word, synset_words, pos, gloss, examples)
+        synset = Synset(synset_id, head_word,
+                        synset_words, pos, gloss, examples)
 
         self._update_synset_idx_map(synset)
 
@@ -141,7 +147,10 @@ class IndoWordNet:
         return list(result['synsets'].values)
 
     def synsets(self, word, pos=None):
-        synset_id_list = self._synset_idx_map[word]
+        try:
+            synset_id_list = self._synset_idx_map[word]
+        except:
+            return []
 
         synsets = []
         if pos is not None:
@@ -197,7 +206,7 @@ class Synset:
         return [Lemma(self, lemma) for lemma in self._lemma_names]
 
     def pos(self):
-        return self._pos  
+        return self._pos
 
     def gloss(self):
         return self._gloss
