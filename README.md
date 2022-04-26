@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <p align="center"><img src="cfilt-dark-vec.jpg" alt="logo" width="150" height="150"/></p>
+=======
+<p align="center"><img src="cfilt-dark-logo.png" alt="logo" width="150" height="150"/></p>
+>>>>>>> e10698873621cce956ea170f36655d2ec5fc075e
 
 # A Python based API to access Indian language WordNets (pyiwn)
 [![PyPI](https://img.shields.io/pypi/v/pyiwn.svg)](https://pypi.python.org/pypi/pyiwn)
