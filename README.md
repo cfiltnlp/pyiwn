@@ -1,4 +1,4 @@
-<p align="center"><img src="cfilt-dark-logo.jpg" alt="logo" width="150" height="150"/></p>
+<p align="center"><img src="cfilt-dark-logo.png" alt="logo" width="150" height="150"/></p>
 
 # A Python based API to access Indian language WordNets (pyiwn)
 [![PyPI](https://img.shields.io/pypi/v/pyiwn.svg)](https://pypi.python.org/pypi/pyiwn)
