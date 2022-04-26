@@ -36,13 +36,20 @@ Please see examples/ for further instructions and usage.
 
 If you publish work that uses pyiwn, please cite the pyiwn paper, as follows:
 
-```
-@inproceedings{panjwani2018pyiwn,
-  title={pyiwn: A Python-based API to access Indian Language WordNets},
-  author={Panjwani, Ritesh and Kanojia, Diptesh and Bhattacharyya, Pushpak},
-  booktitle={Proceedings of the Global WordNet Conference},
-  volume={2018},
-  year={2018}
+```latex
+@inproceedings{panjwani-etal-2018-pyiwn,
+    title = "pyiwn: A Python based {API} to access {I}ndian Language {W}ord{N}ets",
+    author = "Panjwani, Ritesh  and
+      Kanojia, Diptesh  and
+      Bhattacharyya, Pushpak",
+    booktitle = "Proceedings of the 9th Global Wordnet Conference",
+    month = jan,
+    year = "2018",
+    address = "Nanyang Technological University (NTU), Singapore",
+    publisher = "Global Wordnet Association",
+    url = "https://aclanthology.org/2018.gwc-1.47",
+    pages = "378--383",
+    abstract = "Indian language WordNets have their individual web-based browsing interfaces along with a common interface for IndoWordNet. These interfaces prove to be useful for language learners and in an educational domain, however, they do not provide the functionality of connecting to them and browsing their data through a lucid application programming interface or an API. In this paper, we present our work on creating such an easy-to-use framework which is bundled with the data for Indian language WordNets and provides NLTK WordNet interface like core functionalities in Python. Additionally, we use a pre-built speech synthesis system for Hindi language and augment Hindi data with audios for words, glosses, and example sentences. We provide a detailed usage of our API and explain the functions for ease of the user. Also, we package the IndoWordNet data along with the source code and provide it openly for the purpose of research. We aim to provide all our work as an open source framework for further development.",
 }
 ```
 
